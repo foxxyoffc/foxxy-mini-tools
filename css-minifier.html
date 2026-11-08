@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foxxy CSS Minifier</title>
+    <style>
+        body {
+            background: #08070d;
+            color: #f5f2fa;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 180px;
+            background: #171521;
+            color: white;
+            border: 1px solid #9b5cff;
+            padding: 12px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #9b5cff;
+            color: white;
+            border: 0;
+            padding: 12px 20px;
+            margin-top: 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Minifier</h1>
+    <p>Minify your CSS code instantly.</p>
+
+    <textarea id="input" placeholder="Paste your CSS here..."></textarea>
+    <br>
+    <button onclick="minify()">Minify CSS</button>
+    <textarea id="output" placeholder="Minified CSS..." readonly></textarea>
+
+    <script>
+        function minify() {
+            const css = document.getElementById("input").value;
+
+            const result = css
+                .replace(/\/\*[\s\S]*?\*\//g, "")
+                .replace(/\s+/g, " ")
+                .replace(/\s*([{}:;,])\s*/g, "$1")
+                .trim();
+
+            document.getElementById("output").value = result;
+        }
+    </script>
+</body>
+</html>
